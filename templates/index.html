@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="HealthCare Assistant - Your AI-powered healthcare FAQ helper">
+    <title>HealthCare Assistant - AI Health FAQ Helper</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🏥</text></svg>">
+</head>
+<body>
+    <div class="container">
+        <!-- Header Section -->
+        <header>
+            <div class="header-content">
+                <div class="logo-section">
+                    <span class="logo-icon">🏥</span>
+                    <div>
+                        <h1>HealthCare Assistant</h1>
+                        <p>Your AI-powered healthcare FAQ helper</p>
+                    </div>
+                </div>
+                <button id="resetBtn" class="reset-btn" title="Start a new conversation">
+                    <span>🔄</span> Reset Chat
+                </button>
+            </div>
+        </header>
+
+        <!-- Chat Container -->
+        <div class="chat-container" id="chatContainer">
+            <!-- Welcome Message -->
+            <div class="welcome-message">
+                <h2>👋 Welcome to HealthCare Assistant!</h2>
+                <p class="subtitle">I'm here to help you with your healthcare coverage questions.</p>
+                
+                <div class="features-grid">
+                    <div class="feature-card">
+                        <span class="feature-icon">💊</span>
+                        <h3>Telehealth Coverage</h3>
+                        <p>Learn about copays and virtual visits</p>
+                    </div>
+                    <div class="feature-card">
+                        <span class="feature-icon">👨‍⚕️</span>
+                        <h3>Provider Network</h3>
+                        <p>Find in-network healthcare providers</p>
+                    </div>
+                    <div class="feature-card">
+                        <span class="feature-icon">🧠</span>
+                        <h3>Mental Health</h3>
+                        <p>Coverage for counseling sessions</p>
+                    </div>
+                    <div class="feature-card">
+                        <span class="feature-icon">📋</span>
+                        <h3>Claims Process</h3>
+                        <p>How to submit and track claims</p>
+                    </div>
+                    <div class="feature-card">
+                        <span class="feature-icon">🚨</span>
+                        <h3>Emergency Care</h3>
+                        <p>ER visit coverage policies</p>
+                    </div>
+                    <div class="feature-card">
+                        <span class="feature-icon">💬</span>
+                        <h3>24/7 Support</h3>
+                        <p>Get instant answers anytime</p>
+                    </div>
+                </div>
+
+                <div class="sample-questions">
+                    <p class="sample-title"><strong>💡 Try asking:</strong></p>
+                    <div class="question-chips">
+                        <button class="chip" data-question="What is the copay for telehealth visits?">What is the copay for telehealth visits?</button>
+                        <button class="chip" data-question="How do I find in-network providers?">How do I find in-network providers?</button>
+                        <button class="chip" data-question="Are mental health visits covered?">Are mental health visits covered?</button>
+                        <button class="chip" data-question="How do I submit a claim?">How do I submit a claim?</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Input Container -->
+        <div class="input-container">
+            <div class="input-wrapper">
+                <input 
+                    type="text" 
+                    id="userInput" 
+                    placeholder="Ask me anything about your healthcare coverage..."
+                    autocomplete="off"
+                    maxlength="500"
+                >
+                <button id="sendBtn" class="send-btn" title="Send message">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M22 2L11 13M22 2L15 22L11 13M22 2L2 8L11 13" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </button>
+            </div>
+            <div class="input-footer">
+                <span class="powered-by">Powered by Azure OpenAI</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Error Toast -->
+    <div id="errorToast" class="toast">
+        <span class="toast-icon">⚠️</span>
+        <span class="toast-message"></span>
+    </div>
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>

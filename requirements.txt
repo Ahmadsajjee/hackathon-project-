@@ -1,0 +1,14 @@
+# Flask Web Framework
+flask==3.0.0
+flask-cors==4.0.0
+
+# Azure OpenAI Integration
+openai==1.51.0
+
+# Environment Configuration
+python-dotenv==1.0.0
+
+# Additional dependencies for production deployment (optional)
+# gunicorn==21.2.0  # WSGI server for production
+# azure-storage-blob==12.19.0  # For Azure Blob Storage integration
+gunicorn==21.2.0
