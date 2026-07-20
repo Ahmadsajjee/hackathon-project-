@@ -62,7 +62,7 @@ jobs:
           echo "Results saved to calculation_results.txt"
 
       - name: Upload results as artifact
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: calculation-results
           path: calculation_results.txt
