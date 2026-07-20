@@ -1,0 +1,68 @@
+name: Calculate Numbers
+
+on:
+  workflow_dispatch:
+    inputs:
+      first_number:
+        description: 'Enter first number'
+        required: true
+        type: number
+        default: 10
+      second_number:
+        description: 'Enter second number'
+        required: true
+        type: number
+        default: 5
+
+jobs:
+  calculate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Calculate sum, difference, product, and quotient
+        run: |
+          first=${{ inputs.first_number }}
+          second=${{ inputs.second_number }}
+          
+          sum=$((first + second))
+          difference=$((first - second))
+          product=$((first * second))
+          quotient=$(echo "scale=2; $first / $second" | bc)
+          
+          echo "========== CALCULATION RESULTS =========="
+          echo "First Number: $first"
+          echo "Second Number: $second"
+          echo ""
+          echo "Sum (Addition): $sum"
+          echo "Difference (Subtraction): $difference"
+          echo "Product (Multiplication): $product"
+          echo "Quotient (Division): $quotient"
+          echo "========================================="
+
+      - name: Create output file
+        run: |
+          first=${{ inputs.first_number }}
+          second=${{ inputs.second_number }}
+          sum=$((first + second))
+          difference=$((first - second))
+          product=$((first * second))
+          quotient=$(echo "scale=2; $first / $second" | bc)
+          
+          cat > calculation_results.txt << EOF
+          CALCULATION RESULTS
+          ===================
+          First Number: $first
+          Second Number: $second
+          
+          Sum: $sum
+          Difference: $difference
+          Product: $product
+          Quotient: $quotient
+          EOF
+          
+          echo "Results saved to calculation_results.txt"
+
+      - name: Upload results as artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: calculation-results
+          path: calculation_results.txt
